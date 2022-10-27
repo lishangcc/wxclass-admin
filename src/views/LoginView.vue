@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="content">
-            <div style="text-align:center;margin-bottom: 30px;">用户登陆</div>
+            <div style="text-align:center;margin-bottom: 30px;">用户登录</div>
             <a-form
                 :model="formState"
                 name="basic"
@@ -32,7 +32,7 @@
                 </a-form-item>
             
                 <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-                    <a-button type="primary" html-type="submit">登陆</a-button>
+                    <a-button type="primary" html-type="submit">登录</a-button>
                 </a-form-item>
                 </a-form>
         </div>

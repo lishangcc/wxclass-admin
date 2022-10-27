@@ -23,7 +23,7 @@
         </template>
         <template v-else-if="column.key === 'faceImg'">
           <span>
-            <img :src="'/api/files'+record.faceImg"/>
+            <img :src="'/api'+record.faceImg" style="width: 80px; height:80px;"/>
           </span>
         </template>
         <template v-else-if="column.key === 'action'">

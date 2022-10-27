@@ -3,6 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
+    name: 'login',
+    component: () => import('../views/LoginView.vue')
+  },
+  {
+    path: '/layout',
     name: 'layout',
     component: () => import('../layout/Layout.vue'),
     redirect: '/home',
@@ -33,12 +38,8 @@ const routes = [
         component: () => import('../views/ChapterView.vue')
       }
     ]
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginView.vue')
   }
+
 ]
 
 const router = createRouter({

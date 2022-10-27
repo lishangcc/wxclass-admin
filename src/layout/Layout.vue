@@ -40,8 +40,26 @@
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
+
+
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0" />
+      <a-layout-header style="background: #fff; padding: 0">
+        <div class="header">
+          <div class="header-avatar">
+            <a-avatar :size="45"><template #icon><UserOutlined /></template>
+          </a-avatar>
+          </div>
+
+          <div class="header-menu">
+            <ui>
+              <li><a href="#">个人信息</a></li>
+              <li><a href="#">退出登录</a></li>              
+            </ui>
+          </div>
+          
+        </div>
+      </a-layout-header>
+
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0;text-align: left;">
           <a-breadcrumb-item>User</a-breadcrumb-item>
@@ -77,6 +95,8 @@ export default defineComponent({
   },
 
 });
+
+
 </script>
 <style>
 #components-layout-demo-side .logo {
@@ -90,5 +110,30 @@ export default defineComponent({
 }
 [data-theme='dark'] .site-layout .site-layout-background {
   background: #141414;
+}
+
+
+.header{
+  position: fixed;
+  /* position: sticky; */
+  right: 40px;
+}
+
+.header-menu{
+  width: 120px;
+  background-color: rgb(205, 202, 202);
+  z-index: 999;
+  /* box-sizing: 0 5px 25px rgba(0,0,0,0,1); */
+  border-radius: 15px;
+  list-style: none;
+  line-height: 50px;
+  /* visibility: hidden; */
+  visibility: hidden;
+  /* display: none; */
+}
+
+.header:hover .header-menu{
+  visibility: visible;
+  /* display: block; */
 }
 </style>
