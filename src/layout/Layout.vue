@@ -53,7 +53,7 @@
           <div class="header-menu">
             <ui>
               <li><a href="#">个人信息</a></li>
-              <li><a href="#">退出登录</a></li>              
+              <li><a href="/login">退出登录</a></li>              
             </ui>
           </div>
           
