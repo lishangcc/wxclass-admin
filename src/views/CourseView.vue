@@ -23,12 +23,12 @@
         </template>
         <template v-else-if="column.key === 'faceImg'">
           <span>
-            <img :src="'/api'+record.faceImg" style="width: 80px; height:80px;"/>
+            <img :src="'/api'+record.faceImg"/>
           </span>
         </template>
         <template v-else-if="column.key === 'action'">
           <span>
-           <a>进入章节</a>
+           <a @click="goChapter(record)">进入章节</a>
             <a-divider type="vertical" />
             <a class="edit" @click="onEdit(record)">编辑</a>
             <a-divider type="vertical" />
@@ -99,6 +99,7 @@
                   v-model:file-list="fileList"
                   name="faceImg"
                   action="/api/course/upload"
+                  :before-upload="beforeUpload"
                   :headers="headers"
                   @change="handleChange"
                 >
@@ -179,7 +180,7 @@
                 // `this` 在方法里指向当前 Vue 实例
                 var that = this
                 var url = "/api/course/getPage?pageIndex="+that.pageIndex+"&pageSize="+that.pageSize
-                //var params = "pageIndex="+that.pageIndex+"&pageSize="+that.pageSize
+                
                 var params = "pageIndex=1&pageSize=2"
                 axios.get(url).then(function(result){
                     console.log(result.data)
@@ -224,6 +225,15 @@
                     console.log(reason)
                 })
             },
+            beforeUpload(file){
+              const sizeOk = file.size <1024*1024*1024 * 300;  
+              if (!sizeOk) {
+                message.error('照片大小超过300K！');
+              }
+              
+              
+              return sizeOk ;
+            },
             // 上传文件
             handleChange(info) {
              
@@ -244,10 +254,16 @@
 
             //编辑
             onEdit(record){
+              console.log("进入edit。。。。");
               console.log(record.id);
+              console.log(record.attribute);
 
               this.form = record;
               this.showDrawer();
+            },
+            goChapter(record){
+            
+              this.$router.push({name:'chapter',query: {id:record.id}})
             }
 
           }
