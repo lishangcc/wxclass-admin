@@ -32,7 +32,7 @@
             <a-divider type="vertical" />
             <a class="edit" @click="onEdit(record)">编辑</a>
             <a-divider type="vertical" />
-            <a>刪除</a>
+            <a @click="deleteItem(record)">刪除</a>
           </span>
         </template>
       </template>
@@ -264,9 +264,26 @@
             goChapter(record){
             
               this.$router.push({name:'chapter',query: {id:record.id}})
+            },
+            deleteItem(record){
+              
+              let that = this;
+              console.log(this.form);
+              var url = "/api/course/delete?id="+record.id
+              console.log(url);
+            
+            
+              axios.get(url).then(function(result){
+                    console.log(result.data)
+                  
+                    that.getData();
+                }).catch(function (reason) {
+                    console.log(reason)
+                })
             }
 
           }
+          
 
     });
   </script>
